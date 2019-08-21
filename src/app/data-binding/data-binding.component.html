@@ -1,25 +1,35 @@
 <h1>Interpolação</h1>
 
-<p>String com interpolação: {{ url }}</p>
-<p>1 + 1 = {{ 1 + 1 }}</p>
+<p>String com Interpolação: {{ url }}</p>
+<p>1+1 = {{ 1+1 }}</p>
 
 <h1>Property Binding</h1>
-<img [src]="urlimg">
-
-<h1>Event binding</h1>
-<input type="text"(keyup)="onKeyUp($event)"
-(keyup.enter)="armazenarValor(campoInput.value)"
-#campoInput
->
-
-<p>valor doteucu: {{valorAtual}}</p>
-<p>valor atual: {{valorArmazenado}}</p>
-
-<br>
-
-<span
-(mouseover)="onMouseOver()"
-(mouseout)="onMouseOut()"
-[class.highlight]="isMouseOver"
->Passe o mouse</span>
-<p>{{isMouseOver}}</p>
+<div>
+  <img src="{{ urlimagem }}" style="width: 200px">
+</div>
+<div>
+  <img bind-src="urlimagem" style="width: 200px">
+</div>
+<div>
+  <img [src]="urlimagem" style="width: 200px">
+</div>
+<h1>Event Binding</h1>
+<div>
+  <p>Valor atual: {{ valorAtual }}</p>
+  <p>Valor armazenado: {{ valorArmazenado }}</p>
+  <input type="text" class="form-control" (keyup)="onKeyUp($event)" (keyup.enter)="armazenarValor(campoInput.value)" (blur)="armazenarValor(campoInput.value)" #campoInput/>
+</div>
+<div>
+  <span (mouseover)="onMouseOver()" (mouseout)="onMouseOut()" [class.highlight]="isMouseOver">Passe o Mouse</span>
+  <p>{{ isMouseOver }}</p>
+</div>
+<div *ngIf="showMessage" class="alert alert-success" role="alert">
+  Mensagem para o usuário
+</div>
+<button (click)="changeShowMessage()" class="btn btn-success" >Show message</button>
+<div>
+  <input class="form-control" type="text" (keyup.enter)="changeClass(campoInputClasse.value)" #campoInputClasse placeholder="Digite aqui uma classe do bootstrap para modificar a div"/>
+  <div [class]="classe">
+    Div com classe modificável!
+  </div>
+</div>

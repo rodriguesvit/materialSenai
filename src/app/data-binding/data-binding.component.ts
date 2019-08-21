@@ -7,27 +7,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DataBindingComponent implements OnInit {
 
-  url: string ="https://estudante.sc.senai.br//";
-  urlimg: string = "https://extra.globo.com/incoming/14687558-e7f-3b0/w640h360-PROP/carrao.jpg";
-  valorArmazenado: string ="";
-  valorAtual: string = "";
-  isMouseOver: boolean = false;
+url: string = "Senai";
+urlimagem: string = "https://conexaoestudante.com.br/wp-content/uploads/2019/06/SENAI.jpg"
+valorArmazenado: string = "";
+valorAtual: string = "";
+isMouseOver: boolean = false;
+showMessage: boolean = false;
+classe: string = "";
+
   constructor() { }
 
   ngOnInit() {
   }
 
-  onKeyUp(evento: KeyboardEvent){
-    this.valorAtual = ((<HTMLInputElement>evento.target).value);
+  onKeyUp(evento: KeyboardEvent) {
+    this.valorAtual = (<HTMLInputElement>evento.target).value;
   }
+
   armazenarValor(valor: string){
     this.valorArmazenado = valor;
   }
-  onMouseOver(){
+
+  onMouseOver() {
     this.isMouseOver = true;
   }
-  onMouseOut(){
+
+  onMouseOut() {
     this.isMouseOver = false;
   }
 
+  changeShowMessage() {
+    this.showMessage = !this.showMessage;
+  }
+
+  changeClass(classe: string) {
+    this.classe = classe;
+  }
 }
